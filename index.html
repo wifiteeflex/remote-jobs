@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remote Chat Jobs</title>
+
+<style>
+body{
+  font-family: Arial;
+  margin:0;
+  background:#f4f6f8;
+}
+
+.header{
+  background:#0a66c2;
+  color:#fff;
+  padding:15px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.container{
+  max-width:400px;
+  margin:20px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1{color:#0a66c2;font-size:22px;}
+
+.timer{
+  font-size:30px;
+  color:red;
+  margin:10px 0;
+}
+
+.option{
+  border:2px solid #0a66c2;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.option.active{
+  background:#e7f3ff;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  background:#0a66c2;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  margin-top:15px;
+}
+
+input, select{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.notice{
+  background:#fff3cd;
+  padding:10px;
+  border-radius:8px;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.link{
+  color:#0a66c2;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+  display:block;
+}
+
+.page{display:none;}
+.page.active{display:block;}
+</style>
+</head>
+
+<body>
+
+<div class="header">Remote Chat Support Jobs</div>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+  <div class="container">
+    <h1>Chat and Earn in Dollars 💬💰</h1>
+    <p>Work remotely chatting with clients worldwide.</p>
+
+    <div class="notice">⚠️ Only 15 positions left today</div>
+
+    <div class="timer" id="timer">02:00</div>
+
+    <p>Select your availability:</p>
+
+    <div class="option" onclick="selectOption(this)">2 hrs/day</div>
+    <div class="option" onclick="selectOption(this)">5 hrs/day</div>
+    <div class="option" onclick="selectOption(this)">8 hrs/day</div>
+
+    <button onclick="goNext()">Continue</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div class="container">
+    <h1>Register Now</h1>
+    <p>Complete your application</p>
+
+    <select id="country">
+      <option value="">Select Country</option>
+      <option>Afghanistan</option>
+      <option>Albania</option>
+      <option>Algeria</option>
+      <option>Angola</option>
+      <option>Barbuda</option>
+      <option>Namibia</option>
+      <option>Nassau</option>
+      <option>Nicaragua</option>
+      <option>Norway</option>
+      <option>Niger</option>
+      <option>Nigeria</option>
+      <option>Oman</option>
+      <option>Pakistan</option>
+      <option>Palau</option>
+      <option>Panama</option>
+      <option>Papal States</option>
+      <option>Papua New Guinea</option>
+      <option>Paraguay</option>
+      <option>Peru</option>
+      <option>Philippines</option>
+      <option>Piedmont-Sardinia</option>
+      <option>Poland</option>
+      <option>Portugal</option>
+      <option>Vanuatu</option>
+      <option>Venezuela</option>
+      <option>Vietnam</option>
+      <option>Württemberg</option>
+      <option>Yemen</option>
+      <option>Zambia</option>
+      <option>Zimbabwe</option>
+    </select>
+
+    <input id="name" placeholder="Full Name (e.g. John Smith)">
+    <input id="age" placeholder="Age (e.g. 25)">
+    <input id="phone" placeholder="Phone (e.g. +234 9162 469 435)">
+    <input id="email" placeholder="Email (e.g. john@gmail.com)">
+
+    <button onclick="submitForm()">Submit Application</button>
+  </div>
+</div>
+
+<!-- PAGE 3 (VERIFICATION) -->
+<div id="page3" class="page">
+  <div class="container">
+    <h1>Email Verification</h1>
+    <p>Enter the confirmation code sent to your email.</p>
+
+    <div class="timer" id="verifyTimer">05:00</div>
+
+    <input placeholder="Enter confirmation code">
+
+    <button>Verify Code</button>
+
+    <span class="link" onclick="openAd()">Having a problem? Get it here</span>
+  </div>
+</div>
+
+<script>
+
+// TIMER PAGE 1
+let time = 120;
+setInterval(()=>{
+  let m = Math.floor(time/60);
+  let s = time%60;
+  document.getElementById("timer").innerText =
+    `${m}:${s<10?'0'+s:s}`;
+  if(time>0) time--;
+},1000);
+
+// SELECT OPTION
+let selected = false;
+
+function selectOption(el){
+  document.querySelectorAll(".option").forEach(o=>o.classList.remove("active"));
+  el.classList.add("active");
+  selected = true;
+}
+
+// NEXT PAGE
+function goNext(){
+  if(!selected){
+    alert("Please select working hours");
+    return;
+  }
+
+  window.open("https://omg10.com/4/8729428", "_blank");
+
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
+}
+
+// SUBMIT FORM
+function submitForm(){
+
+  let country = document.getElementById("country").value;
+  let name = document.getElementById("name").value.trim();
+  let age = document.getElementById("age").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let email = document.getElementById("email").value.trim();
+
+  if(!country || !name || !age || !phone || !email){
+    alert("⚠️ Please fill all fields.");
+    return;
+  }
+
+  if(isNaN(age) || age < 18){
+    alert("⚠️ Must be 18+");
+    return;
+  }
+
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!email.match(emailPattern)){
+    alert("⚠️ Enter valid email");
+    return;
+  }
+
+  if(phone.length < 8){
+    alert("⚠️ Enter valid phone");
+    return;
+  }
+
+  alert("⏳ Submitting your application...");
+
+  setTimeout(()=>{
+    alert("🎉 Congratulations! Check your email for confirmation code.");
+
+    window.open("https://omg10.com/4/8676459", "_blank");
+
+    // GO TO VERIFICATION PAGE
+    document.getElementById("page2").classList.remove("active");
+    document.getElementById("page3").classList.add("active");
+
+    startVerificationTimer();
+
+  },1500);
+}
+
+// VERIFICATION TIMER (5 MIN)
+function startVerificationTimer(){
+  let time = 300;
+
+  let interval = setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+
+    document.getElementById("verifyTimer").innerText =
+      `${m}:${s<10?'0'+s:s}`;
+
+    if(time <= 0){
+      clearInterval(interval);
+    }
+
+    time--;
+  },1000);
+}
+
+// OPEN AD AGAIN
+function openAd(){
+  window.open("https://omg10.com/4/8729428", "_blank");
+}
+
+</script>
+
+</body>
+  </html>
